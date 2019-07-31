@@ -1,0 +1,502 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <!-- adding material icon for shopping_cart -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+        <title>Gradr Project Challenge</title>
+        <style>
+            /* FOR PHONE lAYOUT */
+            /*********************************************/
+            .phone{
+                display: flex;
+                flex-direction: column;
+                width: 26%;
+                border: 3px solid #00000094;
+                border-radius: 30px;
+                height: 97vh;
+                background-color: rgb(14, 13, 13);
+                float: right;
+            }
+            .speaker {
+                background-color: white;
+                width: 35%;
+                height: 0.8em;
+                margin: 0 auto;
+                border-radius: 40px;
+                margin-top: 0.5em;
+                background-color: #413e3e94;
+            }
+            .layout {
+                width: 95%;
+                height: 92%;
+                background-color: rgb(255, 255, 255);
+                border-radius: 2px;
+                margin: 0 auto;
+                margin-top: 1em;
+                display: flex;
+                flex-direction: column;
+            }
+            @media only screen and (max-width: 480px) {
+                .phone {
+                    width: 70%;
+                }
+            }
+            @media only screen and (min-width: 481px) and (max-width: 550px) {
+                .phone {
+                    width: 60%;
+                }
+            }
+            @media only screen and (min-width: 551px) and (max-width: 600px) {
+                .phone {
+                    width: 55%;
+                }
+            }
+            @media only screen and (min-width: 601px) and (max-width: 700px) {
+                .phone {
+                    width: 45%;
+                }
+            }
+            /***********************************************/
+            /* YOUR STYLE GOES HERE */
+            
+            /* body {
+            margin: 0;
+            padding: 1em;
+            background-color: white;
+            } */
+        
+            /*Styling the card*/
+            [data-cart-info] span {
+                display: inline-block;
+                vertical-align: middle;
+            }
+            
+            .material-icons {
+                /* font-size: 150px;  */
+                font-size: 8em;
+                margin-left: 0.2em;
+            }
+            
+            [data-credit-card] {
+                /* width: 435px; */
+                width: 110%;
+                height: 75%;
+                /* min-height: 250px; */
+                border-radius: 10px;
+                background-color: #5d6874;
+                margin-left: -1em;
+            }
+            
+            [data-card-type] {
+                display: block;
+                width: 120px;
+                height: 60px;
+            }
+            
+            /* [data-cc-digits] {
+                margin-top: 2em;
+                margin-top: 0.5em;
+            } */
+            
+            [data-cc-digits] input {
+                color: white;
+                font-size: 2em;
+                line-height: 2em;
+                border: 0;
+                background: none;
+                margin-right: 0.5em;
+            }
+            
+            [data-cc-info] {
+                /* margin: 1em; */
+                margin: 0.5em;
+            }
+            
+            [data-cc-info] input {
+                color: white;
+                font-size: 1.2em;
+                border: 0;
+                background: none;
+            }
+            
+            [data-cc-info] input:nth-child(2) {
+                /* padding-right: 10px; */
+                float: right;
+            }
+            
+            
+            [data-pay-btn] {
+                /* position: fixed; */
+                position: relative; 
+                margin: 0 auto;
+                width: 70%;
+                border: 1px solid;
+                bottom: 25px;
+                /* left: 50px; */
+                background-color: white;
+                color: rgb(21, 21, 248);
+                padding: 5px;
+                cursor: pointer;
+            }
+            
+            /****************************************************/
+            /* BASIC STYLES */
+            /***************************************************/
+            [data-cart-info] {
+                transform: scale(0.78);
+                margin-left: -3.4em;
+            }
+            [data-credit-card] {
+                transform: scale(0.78);
+                
+            }
+            [data-cc-info] input:focus,
+            [data-cc-digits] input:focus {
+                outline: none;
+            }
+            .mdc-card__primary-action,
+            .mdc-card__primary-action:hover {
+                cursor: auto;
+                padding: 20px;
+                min-height: inherit;
+            }
+            
+            [data-credit-card] [data-card-type] {
+                transition: width 1.5s;
+                margin-left: calc(100% - 130px);
+            }
+            .is-visa {
+                background: linear-gradient(135deg, #622774 0%, #c53364 100%);
+            }
+            .is-mastercard {
+                background: linear-gradient(135deg, #65799b 0%, #5e2563 100%);
+            }
+            .is-visa [data-card-type],
+            .is-mastercard [data-card-type] {
+                width: auto;
+            }
+            input.is-invalid,
+            .is-invalid input {
+                text-decoration: line-through;
+            }
+            ::placeholder {
+                color: #fff;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <article>
+                <div class="phone">
+                    <div class="speaker"></div>
+                    <div class="layout">
+
+                        <!-- YOUR HTML GOES HERE -->
+
+
+                        <div data-cart-info>
+                            <header class="mdc-typography--headline4">
+                                <span class="material-icons">
+                                shopping_cart
+                                </span>
+                                <span data-bill></span>
+                            </header>  
+                        </div>
+                                  
+                        <div data-credit-card class="mdc-card mdc--outlined">
+                            <div class="mdc-card__primary-action">
+                                <img data-card-type src="https://placehold.it/120x60.png?text=Card" alt="Credit Card logo">
+                                
+                                <div data-cc-digits>
+                                <input type="text" size="4" placeholder="----">
+                                <input type="text" size="4" placeholder="----">
+                                <input type="text" size="4" placeholder="----">
+                                <input type="text" size="4" placeholder="----">
+                                </div>
+                                
+                                <div data-cc-info>
+                                <input type="text" size="20" placeholder="Name Surname">
+                                <input type="text" size="6" placeholder="MM/YY">
+                                </div>
+                            </div>
+                        
+                        </div>
+                                  
+                        <button data-pay-btn class="mdc-button">Pay & Checkout Now </button>
+    
+                    
+                    </div>
+                </div>
+            </article>
+        </main>
+    </body>
+
+    <script>
+        const supportedCards = {
+            visa,
+            mastercard
+       };
+    
+    const countries = [
+        {
+            code: "US",
+            currency: "USD",
+            country: 'United States'
+        },
+        {
+            code: "NG",
+            currency: "NGN",
+            country: 'Nigeria'
+        },
+        {
+            code: 'KE',
+            currency: 'KES',
+            country: 'Kenya'
+        },
+        {
+            code: 'UG',
+            currency: 'UGX',
+            country: 'Uganda'
+        },
+        {
+            code: 'RW',
+            currency: 'RWF',
+            country: 'Rwanda'
+        },
+        {
+            code: 'TZ',
+            currency: 'TZS',
+            country: 'Tanzania'
+        },
+        {
+            code: 'CM',
+            currency: 'XAF',
+            country: 'Cameroon'
+        },
+        {
+            code: 'GH',
+            currency: 'GHS',
+            country: 'Ghana'
+        }
+    ];
+ 
+    const appState = {};
+    const formatAsMoney = (amount, buyerCountry) => {
+        const country = countries.find(nation => nation.country === buyerCountry);
+        const countryObj = country ? country: countries[0];
+        
+        return amount.toLocaleString(`en-${countryObj.code}`, {
+        style: 'currency',
+        currency: countryObj.currency
+        })
+    }
+    // adding styles if valid or not
+    const flagIfInvalid = (field, isValid) => (isValid === true) ? field.classList.remove('is-invalid') : field.classList.add('is-invalid');
+    // checking the expiry date formate
+    const expiryDateFormatIsValid = (target) => {
+        const expiryDate = target.value;
+        if(expiryDate.length === 5 && expiryDate[2] === '/') {
+        return true;
+        } else {
+        return false;
+        }
+    }
+    // Detecting card Type: if it starts with 4, it's a visa card. If it starts with 5, it's a mastercard
+    const detectCardType = ({ target }) => {
+        const cardNumber = target.value,
+            creditCardClass = document.querySelector('[data-credit-card]').classList,
+            image = document.querySelector('[data-card-type]');
+        
+        // checking for supported card and adding the needed image and styling
+        if(cardNumber.startsWith('4')) {
+        // removing is-mastercard and adding is-visa
+        if(creditCardClass.contains('is-mastercard')) {
+            creditCardClass.remove('is-mastercard');
+            creditCardClass.add('is-visa');
+        } else {
+            creditCardClass.add('is-visa');
+        }
+        // adding visa image
+        image.src = supportedCards.visa;
+        return 'is-visa';
+        } 
+        else if(cardNumber.startsWith('5')) {
+        // removing is-visa and adding is-mastercard
+        if(creditCardClass.contains('is-visa')) {
+            creditCardClass.remove('is-visa');
+            creditCardClass.add('is-mastercard');
+        } else {
+            creditCardClass.add('is-mastercard');
+        }
+        // adding mastercard logo
+        image.src = supportedCards.mastercard;
+        return 'is-mastercard';
+        }
+    }
+    // Validating ExpiryDate
+    const validateCardExpiryDate = ({ target }) => {
+        // checking expiryDate with current date 
+    const checkExpiryDate = (date) => {
+        const currentDate = new Date(),
+            month = String(currentDate.getMonth() + 1),
+            year = String(currentDate.getFullYear());
+        
+        // converting month and year to MM and YY format
+        const currentYY = Number(year.slice(2));
+        const currentMM = Number((month.length === 1) ? 0+month : month);
+        
+        // converting inputted date to array to get the MM and YY format as numbers
+        const inputtedDate = date.split('/'),
+            inputtedMM = Number(inputtedDate[0]),
+            inputtedYY = Number(inputtedDate[1]);
+        
+        // checking if the inputtedDate is in the future
+        if( (inputtedYY > currentYY) || 
+            (inputtedMM > currentMM && currentYY === inputtedYY) 
+        ) {
+        return true;
+        } else {
+        return false;
+        }
+    }
+        // validating expiry date finally...
+        if(expiryDateFormatIsValid(target) && checkExpiryDate(target.value)) {
+        flagIfInvalid(target, true);
+        //console.log('valid expiry date')
+        return true;
+        } else {
+        flagIfInvalid(target, false);
+        //console.log('invalid expiry date')
+        return false;
+        }
+    }
+    // Validating card holder's Name
+    const validateCardHolderName = ({ target }) => {
+        const fullName = target.value.split(' '),
+            name = fullName[0],
+            surname = fullName[1];
+        
+        // checking for number in the name
+        const checkForNumber = (fullName) => /\d/.test(fullName)
+        
+        if(target.value.includes(' ') && 
+        name.length >= 3 && 
+        surname.length >= 3 && 
+        fullName.length === 2 &&
+        !checkForNumber(target.value)
+        ) {
+        //console.log('valid card holder')
+        flagIfInvalid(target, true);
+        return true;
+        } else {
+        //console.log('invalid card holder, please check your name and surname');
+        flagIfInvalid(target, false)
+        return false;
+        }
+    }
+    // validating card number using the Luhn Algorithm
+    const validateWithLuhn = (digits) => {
+        const array = [];
+        
+        // looping through the array and checking if the index is an even number so as to find the number to be doubled
+        for(let i = 0; i < digits.length; i++) {
+        if(i % 2 == 0) {
+            // checking if number when doubled is greater than 9, subtracting 9 from it and pushing to array, or just pushing the double to array if it's not
+            if(digits[i]*2 > 9) {
+            array.push(digits[i]*2 - 9)
+            } else {
+            array.push(digits[i]*2)
+            }
+        } 
+        else {
+            // convert odd indexed numbers to number and push to array
+            array.push(parseInt(digits[i], 10))
+            
+        }
+        }
+        // adding numbers in array
+        const sum = array.reduce((acc, number) => acc + number);
+        
+        // checking if sum is divisible by 10 (it is valid), and returning true else returning false;
+        if(sum % 10 === 0) {
+        return true;
+        } else {
+        return false;
+        }
+        
+    }
+    // Validating credit Card Numbers
+    const validateCardNumber = () => {
+        const numberDiv = document.querySelector('[data-cc-digits]');
+        const firstInput = numberDiv.children[0].value.split(''),
+            secondInput = numberDiv.children[1].value.split(''),
+            thirdInput = numberDiv.children[2].value.split(''),
+            fourthInput = numberDiv.children[3].value.split(''),
+            digits = firstInput.concat(secondInput, thirdInput, fourthInput);
+        //validating card number        
+        if(validateWithLuhn(digits) && digits.length === 16) {
+        //console.log('valid card number');
+        numberDiv.classList.remove('is-invalid');
+        return true;
+        } else {
+        //console.log('invalid card number');
+        numberDiv.classList.add('is-invalid');
+        return false;
+        }
+    }
+    const uiCanInteract = () => {
+        const firstDigitInput = document.querySelector('[data-cc-digits] input:nth-child(1)'),
+            nameInput = document.querySelector('[data-cc-info] input:nth-child(1)'),
+            dateInput = document.querySelector("[data-cc-info] input:nth-child(2)"),
+            payButton = document.querySelector('[data-pay-btn]');
+        
+        // assigning event handlers to specified inputs
+        firstDigitInput.addEventListener('blur', detectCardType)
+        nameInput.addEventListener('blur', validateCardHolderName);
+        dateInput.addEventListener('blur', validateCardExpiryDate)
+        payButton.addEventListener('click', validateCardNumber);
+        
+        //Giving focus to the first digit input
+        firstDigitInput.focus()
+        
+    };
+    const displayCartTotal = ({ results }) => {
+        // Destructuring results array into data 
+        // and data into itemsInCart and buyerCountry
+        //console.log(results)
+        const [data] = results;
+        const {itemsInCart, buyerCountry} = data;
+        // adding items and country to appState
+        appState.items = itemsInCart;
+        appState.country = buyerCountry;
+        
+        // calculating the total bill with reduce and assign it to bill in appState (using arrow function)
+        appState.bill = itemsInCart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+        
+        appState.billFormatted = formatAsMoney(appState.bill, buyerCountry)
+        console.log(appState)
+        
+        const billSpan = document.querySelector('[data-bill]');
+        billSpan.textContent = appState.billFormatted;
+        
+        uiCanInteract()
+    }
+    const fetchBill = () => {
+        const api = 'https://randomapi.com/api/006b08a801d82d0c9824dcfdfdfa3b3c';
+        
+        // fetching data from the API
+        fetch(api)
+            .then(response => response.json())
+            .then(data => displayCartTotal(data))
+            .catch(error => console.warn(error))
+    }
+    const startApp = () => {
+        fetchBill()
+    };
+    startApp();
+    </script>
+</html>
